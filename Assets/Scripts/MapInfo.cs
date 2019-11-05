@@ -7,6 +7,7 @@ public class MapInfo : MonoBehaviour
     public List<Transform> itemPositionList;
     public List<Transform> enemyPositionList;
     public GameObject item;
+    private GameObject nowitem;
     public GameObject octoenemy;
 
     private List<Transform> currentitem;
@@ -16,6 +17,8 @@ public class MapInfo : MonoBehaviour
     {
         currentitem = new List<Transform>(itemPositionList);
         currentenemy = new List<Transform>(enemyPositionList);
+        int rand = Random.Range(0, currentitem.Count);
+        nowitem = Instantiate(item, currentitem[rand].position, Quaternion.identity);
     }
 
     public void itemSpawn()
@@ -24,8 +27,9 @@ public class MapInfo : MonoBehaviour
         {
             currentitem = new List<Transform>(itemPositionList);
         }
+
         int rand = Random.Range(0, currentitem.Count);
-        Instantiate(item,currentitem[rand].position,Quaternion.identity);
+        nowitem.transform.position=currentitem[rand].position;
         currentitem.RemoveAt(rand);
     }
     public void enemySpawn()

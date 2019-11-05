@@ -51,8 +51,9 @@ MonoBehaviour:
   initialHealth: 100
   healthDecreaseRate: 1
   healthDecreaseCycle: 0.8
-  initialItemCount: 3
+  initialItemCount: 1
   initialEnemyCount: 5
+  mapcount: 0
   playerHealth: 0
   clearCount: 0
   totalscore: 0

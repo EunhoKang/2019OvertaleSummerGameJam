@@ -29,7 +29,7 @@ public class MapManager : MonoBehaviour
     public int initialItemCount;
     public int initialEnemyCount;
 
-    private int mapcount=0;
+    [HideInInspector]public int mapcount=0;
     private WaitForSeconds fxtime;
 
     [HideInInspector] public float playerHealth;

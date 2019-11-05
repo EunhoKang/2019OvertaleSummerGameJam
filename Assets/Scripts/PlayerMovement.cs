@@ -10,6 +10,9 @@ public class PlayerMovement : MonoBehaviour {
     public GameObject canvas;
 
 	public float runSpeed = 40f;
+    public AudioClip shotSound;
+    public AudioClip jumpSound;
+    public AudioClip collectSound;
 
     private Canvas canvasScript;
 
@@ -72,6 +75,7 @@ public class PlayerMovement : MonoBehaviour {
 
 		if (Input.GetButtonDown(jumpbutton))
 		{
+            SoundManager.soundmanager.SFXPlay(jumpSound);
 			jump = true;
 			
 		}
@@ -84,6 +88,7 @@ public class PlayerMovement : MonoBehaviour {
 		}
         if (Input.GetButtonDown(shootbutton))
         {
+            SoundManager.soundmanager.SFXPlay(shotSound);
             weapon.Shoot();
         }
     }
@@ -118,14 +123,14 @@ public class PlayerMovement : MonoBehaviour {
         {
             MapManager.mapmanager.clearCount++;
             MapManager.mapmanager.totalscore++;
-            MapManager.mapmanager.playerHealth += 50;
+            MapManager.mapmanager.playerHealth += (50-MapManager.mapmanager.mapcount);
+            SoundManager.soundmanager.SFXPlay(collectSound);
             if (MapManager.mapmanager.playerHealth > 100)
             {
                 MapManager.mapmanager.playerHealth = 100;
             }
-            MapManager.mapmanager.itemSpawn();
             keySwap();
-            Destroy(collision.gameObject);
+            MapManager.mapmanager.itemSpawn();
         }
     }
 
